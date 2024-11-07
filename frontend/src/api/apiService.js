@@ -1,16 +1,20 @@
 // src/api/apiService.js
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:5000/api',
+  baseURL: "http://127.0.0.1:5000/api",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
 // Request interceptor
 api.interceptors.request.use(
   (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers["Authorization"] = token;
+    }
     return config;
   },
   (error) => Promise.reject(error)
@@ -24,10 +28,10 @@ api.interceptors.response.use(
       // Exclude /login and /signup endpoints from redirection
       if (
         error.config &&
-        !error.config.url.includes('/login') &&
-        !error.config.url.includes('/signup')
+        !error.config.url.includes("/login") &&
+        !error.config.url.includes("/signup")
       ) {
-        window.location.href = '/';
+        window.location.href = "/";
       }
     }
     return Promise.reject(error);

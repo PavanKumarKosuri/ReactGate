@@ -47,7 +47,7 @@ const Signup = () => {
   return (
     <div className="flex h-screen">
       {/* Left Side */}
-      <div className="w-1/2 flex flex-col justify-center items-center bg-gradient-to-br from-green-600 to-teal-500 p-8">
+      <div className="w-full flex flex-col justify-center items-center bg-gradient-to-br from-green-600 to-teal-500 p-8">
         <h2 className="text-4xl font-bold text-white mb-8 animate-slideIn">
           Create Account
         </h2>
@@ -93,10 +93,10 @@ const Signup = () => {
           </p>
         </form>
       </div>
-      {/* Right Side */}
+      {/* // Right Side
       <div className="w-1/2 bg-black flex items-center justify-center">
         <p className="text-white text-2xl animate-pulse">Join Our Community</p>
-      </div>
+      </div> */}
     </div>
   );
 };

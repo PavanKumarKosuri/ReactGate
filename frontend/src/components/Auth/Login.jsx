@@ -1,7 +1,7 @@
-// src/components/Auth/Login.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/apiService";
+import bgImage from "../../assets/background.jpg";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -17,16 +17,13 @@ const Login = () => {
         password: password,
       });
 
-      // Assuming the response contains a success message
       if (response.status === 200) {
-        // Optionally, store user data or token if provided by the backend
-        // For example:
-        // localStorage.setItem("user", JSON.stringify(response.data));
-
+        localStorage.setItem("username", username);
+        console.log("token is:", response.data.token);
+        localStorage.setItem("token", response.data.token);
         navigate("/dashboard");
       }
     } catch (error) {
-      // Handle login errors
       console.error("Login failed:", error);
       alert("Invalid username or password. Please try again.");
     }
@@ -35,7 +32,33 @@ const Login = () => {
   return (
     <div className="flex h-screen">
       {/* Left Side */}
-      <div className="w-1/2 flex flex-col justify-center items-center bg-gradient-to-br from-purple-600 to-blue-500 p-8">
+      <div
+        className="w-full flex flex-col justify-center items-center bg-gradient-to-br from-purple-600 to-blue-500 p-8"
+        style={{
+          // backgroundImage: `url(${bgImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: "120px",
+            left: "220px",
+            fontSize: "24px",
+            fontWeight: "bold",
+            lineHeight: "25px",
+            color: "white",
+            backgroundColor: "rgba(255, 255, 255, 0.2)",
+            padding: "5px 5px",
+            borderRadius: "8px",
+            border: "2px solid white",
+          }}
+        >
+          CHA <br />
+          RAN
+        </div>
         <h2 className="text-4xl font-bold text-white mb-8 animate-fadeIn">
           Welcome Back!
         </h2>
@@ -80,12 +103,12 @@ const Login = () => {
           </p>
         </form>
       </div>
-      {/* Right Side */}
+      {/* Right Side
       <div className="w-1/2 bg-black flex items-center justify-center">
         <p className="text-white text-2xl animate-pulse">
           Welcome to Our Platform
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };
