@@ -1,12 +1,14 @@
+// src/api/apiService.js
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://your-backend-server.com/api',
+  baseURL: 'http://127.0.0.1:5000/api',
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
+// Request interceptor
 api.interceptors.request.use(
   (config) => {
     return config;
@@ -14,11 +16,19 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+// Response interceptor
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      window.location.href = '/';
+      // Exclude /login and /signup endpoints from redirection
+      if (
+        error.config &&
+        !error.config.url.includes('/login') &&
+        !error.config.url.includes('/signup')
+      ) {
+        window.location.href = '/';
+      }
     }
     return Promise.reject(error);
   }

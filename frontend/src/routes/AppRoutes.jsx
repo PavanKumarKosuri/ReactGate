@@ -15,8 +15,8 @@ const AppRoutes = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/dashboard" element={<Cards />} />
       <Route path="/dashboard/card-a" element={<CardA />} />
-      <Route path="/card-b" element={<CardB />} />
-      <Route path="/card-c" element={<CardC />} />
+      <Route path="/dashboard/card-b" element={<CardB />} />
+      <Route path="/dashboard/card-c" element={<CardC />} />
     </Routes>
   );
 };

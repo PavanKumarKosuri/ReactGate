@@ -9,28 +9,27 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    // e.preventDefault();
-    navigate("/dashboard");
+    e.preventDefault();
 
-    // try {
-    //   const response = await api.post("/login", {
-    //     username: username,
-    //     password: password,
-    //   });
+    try {
+      const response = await api.post("/login", {
+        username: username,
+        password: password,
+      });
 
-    //   // Assuming the response contains a success message
-    //   if (response.status === 200) {
-    //     // Optionally, store user data or token if provided by the backend
-    //     // For example:
-    //     // localStorage.setItem("user", JSON.stringify(response.data));
+      // Assuming the response contains a success message
+      if (response.status === 200) {
+        // Optionally, store user data or token if provided by the backend
+        // For example:
+        // localStorage.setItem("user", JSON.stringify(response.data));
 
-    //     navigate("/dashboard");
-    //   }
-    // } catch (error) {
-    //   // Handle login errors
-    //   console.error("Login failed:", error);
-    //   alert("Invalid username or password. Please try again.");
-    // }
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      // Handle login errors
+      console.error("Login failed:", error);
+      alert("Invalid username or password. Please try again.");
+    }
   };
 
   return (

@@ -7,8 +7,8 @@ const Cards = () => {
 
   const cards = [
     { name: "Card A", route: "/dashboard/card-a" },
-    { name: "Card B", route: "/card-b" },
-    { name: "Card C", route: "/card-c" },
+    { name: "Card B", route: "/dashboard/card-b" },
+    { name: "Card C", route: "/dashboard/card-c" },
   ];
 
   return (
