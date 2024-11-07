@@ -6,7 +6,7 @@ const Cards = () => {
   const navigate = useNavigate();
 
   const cards = [
-    { name: "Card A", route: "/card-a" },
+    { name: "Card A", route: "/dashboard/card-a" },
     { name: "Card B", route: "/card-b" },
     { name: "Card C", route: "/card-c" },
   ];
